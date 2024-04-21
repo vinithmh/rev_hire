@@ -40,7 +40,7 @@ class JobApplication(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     jobseeker_id = Column(Integer, ForeignKey("jobseekers.id"))
-    email = Column(String, unique=True)
+    email = Column(String)
     resume = Column(String)
     skills = Column(String)
 

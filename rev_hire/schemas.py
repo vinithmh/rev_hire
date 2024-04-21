@@ -38,10 +38,13 @@ class JobPostingBase(BaseModel):
 class JobPosting(JobPostingBase):
     pass
 
-
+class updateJobPosting(BaseModel):
+    title: str
+    company: str
+    class Config():
+        orm_mode = True
+    
 class showJobPosting(BaseModel):
-    id: int
-    employer_id: int
     title: str
     company: str
     creator: showEmployer
@@ -52,19 +55,36 @@ class JobApplicationBase(BaseModel):
     email: str
     resume: str
     skills: str
-    jobpost: JobPosting
 
 class JobApplication(JobApplicationBase):
     pass
 
-class showJobApplication(BaseModel):
-    id: int
-    jobseeker_id: int
-    jobposting_id: int
+class updateJobApplication(BaseModel):
     email: str
     resume: str
     skills: str
-    title: str
+    class Config():
+        orm_mode = True
+
+class showJobApplication(BaseModel):
+    email: str
+    resume: str
+    skills: str
     class Config(): 
         orm_mode = True
+
+class jobSeekerLogin(BaseModel):
+    email: str
+    password: str
+
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
 
